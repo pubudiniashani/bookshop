@@ -33,7 +33,7 @@ public class SignupFormController {
         Scene scene = new Scene(anchorPane);
         Stage stage = (Stage) root.getScene().getWindow();
         stage.setScene(scene);
-        stage.setTitle("Dashboard");
+        stage.setTitle("Luminex Bookshop Management System");
         stage.centerOnScreen();
     }
 

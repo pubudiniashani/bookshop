@@ -13,5 +13,6 @@ public class CustomerTm {
     private String cusId;
     private String name;
     private String address;
+    private String contactNumber;
 
 }

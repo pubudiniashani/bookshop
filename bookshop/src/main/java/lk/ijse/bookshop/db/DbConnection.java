@@ -12,7 +12,7 @@ public class DbConnection {
         connection = DriverManager.getConnection(
                 "jdbc:mysql://localhost:3306/bookshop",
                 "root",
-                "Ijse@1234"
+                ""
         );
     }
 

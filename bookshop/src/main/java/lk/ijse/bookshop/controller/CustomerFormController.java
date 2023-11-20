@@ -3,6 +3,7 @@ package lk.ijse.bookshop.controller;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import lk.ijse.bookshop.dto.CustomerDto;
@@ -27,12 +28,18 @@ public class CustomerFormController {
     public TableColumn colId;
     public TableColumn colName;
     public TableColumn colAddress;
-
+    public TableColumn colContact;
     private CustomerModel cusModel = new CustomerModel();
 
     public void initialize() {
         setCellValueFactory();
         loadAllCustomer();
+        // Add event handler to update text fields on row click
+        tblCustomer.setOnMouseClicked(event -> {
+            if (event.getClickCount() == 1) {
+                handleTableClick();
+            }
+        });
     }
 
     private void loadAllCustomer() {
@@ -41,13 +48,14 @@ public class CustomerFormController {
         ObservableList<CustomerTm> obList = FXCollections.observableArrayList();
 
         try {
-            List<CustomerDto> dtoList =  model.getAllCustomer();
-            for (CustomerDto dto: dtoList ) {
+            List<CustomerDto> dtoList = model.getAllCustomer();
+            for (CustomerDto dto : dtoList) {
                 obList.add(
                         new CustomerTm(
                                 dto.getCusId(),
                                 dto.getName(),
-                                dto.getAddress()
+                                dto.getAddress(),
+                                dto.getContactNumber()
                         )
                 );
             }
@@ -62,9 +70,11 @@ public class CustomerFormController {
     }
 
     private void setCellValueFactory() {
-        colId.setCellValueFactory(new PropertyValueFactory<>("id"));
+        colId.setCellValueFactory(new PropertyValueFactory<>("cusId"));
         colName.setCellValueFactory(new PropertyValueFactory<>("name"));
         colAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
+        colContact.setCellValueFactory(new PropertyValueFactory<>("contactNumber"));
+
 
     }
 
@@ -78,8 +88,8 @@ public class CustomerFormController {
         var dto = new CustomerDto(cusId, name, address, contactNumber);
 
         boolean isValidate = validateCustomer();
-        if(isValidate){
-            new Alert(Alert.AlertType.CONFIRMATION,"customer saved");
+        if (isValidate) {
+            new Alert(Alert.AlertType.CONFIRMATION, "customer saved");
             try {
                 boolean isSaved = cusModel.saveCustomer(dto);
 
@@ -104,8 +114,8 @@ public class CustomerFormController {
         var dto = new CustomerDto(cusId, name, address, contactNumber);
 
         boolean isValidate = validateCustomer();
-        if(isValidate){
-            new Alert(Alert.AlertType.CONFIRMATION,"customer saved");
+        if (isValidate) {
+            new Alert(Alert.AlertType.CONFIRMATION, "customer saved");
             try {
                 boolean isSaved = cusModel.saveCustomer(dto);
 
@@ -122,26 +132,26 @@ public class CustomerFormController {
     }
 
     private boolean validateCustomer() {
-      boolean matches =  Pattern.matches("[C][0-9]{3,}",txtId.getText());
-        if(!matches){
-            new Alert(Alert.AlertType.ERROR,"Invalid id").show();
+        boolean matches = Pattern.matches("[C][0-9]{3,}", txtId.getText());
+        if (!matches) {
+            new Alert(Alert.AlertType.ERROR, "Invalid id").show();
             return false;
         }
 
-       boolean matches1 = Pattern.matches("[A-Za-z]{4,}",txtName.getText());
-        if(!matches1){
-            new Alert(Alert.AlertType.ERROR,"Invalid name").show();
+        boolean matches1 = Pattern.matches("[A-Za-z]{4,}", txtName.getText());
+        if (!matches1) {
+            new Alert(Alert.AlertType.ERROR, "Invalid name").show();
             return false;
         }
-        boolean matches2 = Pattern.matches("[A-Za-z]{4,}",txtAdd.getText());
-        if(!matches2) {
+        boolean matches2 = Pattern.matches("[A-Za-z]{4,}", txtAdd.getText());
+        if (!matches2) {
             new Alert(Alert.AlertType.ERROR, "Invalid address").show();
             return false;
         }
 
-        boolean matches3 = Pattern.matches("[0-9]{10}",txtContact.getText());
-        if(!matches3){
-            new Alert(Alert.AlertType.ERROR,"Invalid number").show();
+        boolean matches3 = Pattern.matches("[0-9]{10}", txtContact.getText());
+        if (!matches3) {
+            new Alert(Alert.AlertType.ERROR, "Invalid number").show();
             return false;
         }
 
@@ -163,8 +173,12 @@ public class CustomerFormController {
         }
     }
 
-    public void btnClearOnAction(ActionEvent actionEvent) {
+    public void btnRefreshOnAction(ActionEvent actionEvent) {
         clearFields();
+        tblCustomer.refresh();
+        setCellValueFactory();
+        loadAllCustomer();
+
     }
 
     private void clearFields() {
@@ -175,4 +189,17 @@ public class CustomerFormController {
 
     }
 
+    private void handleTableClick() {
+        // Get the selected item from the table
+        CustomerTm selectedCustomer = tblCustomer.getSelectionModel().getSelectedItem();
+
+        if (selectedCustomer != null) {
+            // Update text fields with selected customer data
+            txtId.setText(selectedCustomer.getCusId());
+            txtName.setText(selectedCustomer.getName());
+            txtAdd.setText(selectedCustomer.getAddress());
+            txtContact.setText(selectedCustomer.getContactNumber());
+        }
+
+    }
 }
