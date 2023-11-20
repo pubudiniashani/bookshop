@@ -36,4 +36,14 @@ public class SignupFormController {
         stage.setTitle("Dashboard");
         stage.centerOnScreen();
     }
+
+    @FXML
+    void btnSwitchLoginOnAction (ActionEvent event) throws IOException {
+        AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("/view/login_form.fxml"));
+        Scene scene = new Scene(anchorPane);
+        Stage stage = (Stage) root.getScene().getWindow();
+        stage.setScene(scene);
+        stage.setTitle("Login");
+        stage.centerOnScreen();
+    }
 }

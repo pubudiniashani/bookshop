@@ -9,58 +9,46 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" prefHeight="400.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.bookshop.controller.LoginFormController">
+<AnchorPane fx:id="root" prefHeight="400.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.bookshop.controller.LoginFormController">
    <children>
-      <AnchorPane opacity="0.92" prefHeight="430.0" prefWidth="221.0" style="-fx-background-color: #009c4a;">
+      <AnchorPane opacity="0.92" prefHeight="400.0" prefWidth="226.0" style="-fx-background-color: #009c4a;">
          <children>
-            <ImageView layoutX="32.0" layoutY="45.0">
+            <ImageView layoutX="31.0" layoutY="137.0">
                <image>
                   <Image url="@../icon/luminex-white.png" />
                </image>
             </ImageView>
-            <Label layoutX="37.0" layoutY="284.0" prefHeight="56.0" prefWidth="139.0" text="Bookshop" textFill="#f8f3f3">
-               <font>
-                  <Font name="System Bold" size="25.0" />
-               </font>
-            </Label>
-            <Label layoutX="12.0" layoutY="324.0" prefHeight="40.0" prefWidth="196.0" text="Management" textFill="#fcf6f6">
-               <font>
-                  <Font name="System Bold Italic" size="25.0" />
-               </font>
-            </Label>
-            <Label layoutX="41.0" layoutY="349.0" prefHeight="56.0" prefWidth="111.0" text="System" textFill="#f8f6f6">
-               <font>
-                  <Font name="System Bold" size="25.0" />
-               </font>
-            </Label>
          </children></AnchorPane>
-      <Label layoutX="397.0" layoutY="43.0" prefHeight="46.0" prefWidth="139.0" text="LOGIN" textAlignment="RIGHT">
+      <Label layoutX="399.0" layoutY="45.0" prefHeight="47.0" prefWidth="103.0" text="LOGIN" textAlignment="RIGHT">
          <font>
             <Font name="System Bold" size="32.0" />
          </font>
       </Label>
-      <Label layoutX="287.0" layoutY="143.0" prefHeight="46.0" prefWidth="123.0" text="Username :">
+      <Label layoutX="284.0" layoutY="153.0" prefHeight="18.0" prefWidth="103.0" text="Username :">
          <font>
-            <Font size="16.0" />
+            <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="291.0" layoutY="228.0" prefHeight="24.0" prefWidth="123.0" text="Password :">
+      <Label layoutX="290.0" layoutY="213.0" prefHeight="27.0" prefWidth="97.0" text="Password :">
          <font>
-            <Font size="16.0" />
+            <Font size="18.0" />
          </font>
       </Label>
-      <TextField fx:id="txtUsername" layoutX="411.0" layoutY="150.0" prefHeight="32.0" prefWidth="209.0" style="-fx-background-radius: 15;" />
-      <TextField fx:id="txtPw" layoutX="412.0" layoutY="226.0" prefHeight="32.0" prefWidth="209.0" style="-fx-background-radius: 15;" />
-      <Button layoutX="385.0" layoutY="305.0" mnemonicParsing="false" onAction="#btnLoginOnAction" opacity="0.73" prefHeight="46.0" prefWidth="130.0" style="-fx-background-color: #009c4a; -fx-background-radius: 25;" text="Login" textFill="#e8e6e6">
+      <TextField fx:id="txtUsername" layoutX="385.0" layoutY="150.0" prefHeight="32.0" prefWidth="209.0" style="-fx-background-radius: 15;" />
+      <TextField fx:id="txtPw" layoutX="385.0" layoutY="210.0" prefHeight="32.0" prefWidth="209.0" style="-fx-background-radius: 15;" />
+      <Button layoutX="385.0" layoutY="281.0" mnemonicParsing="false" onAction="#btnLoginOnAction" opacity="0.73" prefHeight="46.0" prefWidth="130.0" style="-fx-background-color: #009c4a; -fx-background-radius: 25;" text="Login" textFill="#e8e6e6">
          <font>
-            <Font name="System Bold Italic" size="21.0" />
+            <Font name="System Bold" size="21.0" />
          </font>
       </Button>
-      <Line endX="160.0" layoutX="435.0" layoutY="99.0" startX="-100.0" style="-fx-fill: #009d71;" />
-      <Label layoutX="322.0" layoutY="391.0" prefHeight="25.0" prefWidth="209.0" text="Don't you have an account ?" />
-      <Button layoutX="514.0" layoutY="386.0" mnemonicParsing="false" onAction="#btnSignupOnAction" opacity="0.65" prefHeight="32.0" prefWidth="80.0" style="-fx-background-color: transparent;" text="SignUp" textFill="#495fbf" underline="true">
+      <Line endX="160.0" layoutX="420.0" layoutY="100.0" startX="-100.0" style="-fx-fill: #009d71;" />
+      <Label layoutX="382.0" layoutY="352.0" prefHeight="25.0" prefWidth="184.0" text="Don't you have an account ?">
          <font>
-            <Font name="System Bold" size="13.0" />
+            <Font size="14.0" />
+         </font></Label>
+      <Button layoutX="556.0" layoutY="348.0" mnemonicParsing="false" onAction="#btnSignupOnAction" opacity="0.65" prefHeight="32.0" prefWidth="81.0" style="-fx-background-color: transparent;" text="SignUp" textFill="#0033ff" underline="true">
+         <font>
+            <Font name="System Bold" size="15.0" />
          </font>
       </Button>
    </children>
